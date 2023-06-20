@@ -1,0 +1,10 @@
+FROM node:16.20.0-alpine3.18
+ARG MY_NAME_ARG=Settakit
+ENV MY_NAME=${MY_NAME_ARG}
+WORKDIR /app
+COPY package*.json /app
+ADD index.js /app
+ADD test.html /app
+RUN npm install
+EXPOSE ${SERVER_PORT}
+CMD [ "node", "index.js" ]
